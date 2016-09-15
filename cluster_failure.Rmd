@@ -158,8 +158,6 @@ papers using *no multiple comparison correction at all*
     4. Create a randomization of the cluster enhanced statistics
     5. Assign p-values to voxels from this null distribution
     6. Correct with Bonferroni or FDR
-    
----
 
 ## Revisiting The Implications
 
@@ -171,7 +169,11 @@ papers using *no multiple comparison correction at all*
 
 ## Are We Safe?
 
-- 
+- Results show voxel wise results are conservative
+- Matches the van Eede *et al.* (2014) results which showed our registration
+  and analysis pipeline were conservative with FDR correction
+  
+---
 
 \centering{\large{Questions and Discussion}}
 
