@@ -2,7 +2,11 @@
 title: "Cluster Failure: fMRI's Big Shake-Up"
 author: "Chris Hammill"
 date: "September 13, 2016"
-output: beamer_presentation
+output: 
+  beamer_presentation:
+    includes: 
+      in_header: tex_header.tex
+    md_extensions: -autolink_bare_uris+link_attributes
 ---
 
 ```{r setup, include=FALSE}
@@ -12,6 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ---
 
 ![](headlines.png)
+
+---
+
+![](title.png)
 
 ## So What Happened
 
@@ -31,7 +39,7 @@ false positive.
 ## About Group Task-Based fMRI
 
 - Most fMRI seeks to measure brain activity by blood flow
-- Blood oxygen level dependent (BOLD) contrast is used
+- Blood oxygen level dependent (BOLD) contrast
 - A time-series of volumes are acquired for each subject
 - Stimuli are presented to the subject throughout the time series
 - The BOLD signaled is modelled as a function of the stimuli
@@ -78,11 +86,34 @@ false positive.
   
 ## The Problems
 
-- When statistics maps aren't smooth enough, RFT p-values are biased
-- RFT typically assumes a stationary noise distribution (uniform noise over the brain)
-- Together these problems can lead to 70% FWE rates in single subject analyses,
-- And ~40% FWE rates in the group comparisons.
-- Control is expected to be at 5%
+- When statistics maps aren't smooth enough, RFT p-values are biased (2003)
+- RFT typically assumes a stationary noise distribution (uniform noise over the brain) which
+  is often invalid (2004)
+- Together these problems can lead to 70% FWE rates in single subject analyses (2012)
+
+## The Paper
+
+- In order to assess how much these problems matter for group comparisons, check the null distribution
+- The authors took a large open data set with a pool of neurotypical subjets, and randomly sampled 
+  groups to compare
+- If after processing and multiple comparison correction any clusters in the brain were significant that
+  test was a false positive (error).
+- The distribution for a two group difference should be Student's t distribution, and after bonferroni
+  correction, the expected proportion of errors should be 5%
+- Higher error rates imply the multiple comparison correction is insufficient.
+- Five analysis functions from the three most popular fMRI software packages were compared to their
+  non-parametric alternative
+
+---
+
+![](cluster_res.png) { width=80% } 
+
+## The results
+
+- All parametric tools produce FWE higher than 5%
+- Situation is more extreme when cluster defining thresholds are high (FWEs ~20-40)
+- Different data sets are affected differently (Beijing less affected than Cambridge)
   
+## 
 
   
